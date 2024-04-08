@@ -1,0 +1,26 @@
+[
+  {
+    "tagsId": "tgcas",
+    "name": "Casual",
+    "isPhotosVisible": true,
+    "isEventsVisible": true
+  },
+  {
+    "tagsId": "tgcos",
+    "name": "Cosplay",
+    "isPhotosVisible": true,
+    "isEventsVisible": true
+  },
+  {
+    "tagsId": "tgedt",
+    "name": "Edited",
+    "isPhotosVisible": true,
+    "isEventsVisible": false
+  },
+  {
+    "tagsId": "tgwed",
+    "name": "Wedding",
+    "isPhotosVisible": false,
+    "isEventsVisible": false
+  }
+]
