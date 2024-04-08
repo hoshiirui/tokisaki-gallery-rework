@@ -15,7 +15,7 @@ const HimawariHeader = ({
 }: HimawariHeaderProps) => {
   return (
     <>
-      <div className="w-full flex justify-between mx-auto py-5 items-center flex-col mt-10 mb-4 space-y-8">
+      <div className="w-full flex justify-between mx-auto py-5 items-center flex-col mb-4 space-y-8">
         <div className="flex justify-between items-center flex-col gap-2">
           <div className="flex flex-row justify-center items-center gap-4">
             <img

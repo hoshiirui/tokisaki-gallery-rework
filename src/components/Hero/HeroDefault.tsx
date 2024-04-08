@@ -63,8 +63,8 @@ const RegularHero = () => {
                     <p className="text-lg mb-4 max-w-2xl mx-auto text-white italic">
                       {data.withAttribute.description}
                     </p>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                      Learn More
+                    <button className="bg-transparent tracking-wider border border-white uppercase hover:bg-primary500 text-white py-2 px-8 rounded">
+                      BOOK NOW
                     </button>
                   </div>
                 ) : null}

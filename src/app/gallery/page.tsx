@@ -13,7 +13,7 @@ export default function Gallery() {
           title="Gallery of Fame"
           desc="This show the best photos I’ve taken so far..."
         />
-        <MasonryDefault galleryType="photo" isFame={true} />
+        <MasonryDefault galleryType="photo" />
       </div>
     </>
   );

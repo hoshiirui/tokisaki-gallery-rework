@@ -21,6 +21,7 @@ interface photosMetadata {
   eventId: string;
   isThumbnail: boolean;
   isFame: boolean;
+  tags: string[];
 }
 
 const MasonryDefault = ({
@@ -31,28 +32,12 @@ const MasonryDefault = ({
   isShow,
   withFilter,
 }: SingleGalleryProps) => {
-  const filters = [
-    {
-      title: "all",
-      isActive: false,
-    },
-    {
-      title: "cosplay",
-      isActive: false,
-    },
-    {
-      title: "casual",
-      isActive: false,
-    },
-    {
-      title: "edited",
-      isActive: false,
-    },
-  ];
+  const filters = ["all", "cosplay", "casual", "edited"];
 
   const [filteredPhotos, setFilteredPhotos] =
     useState<photosMetadata[]>(photos);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedFilter, setSelectedFilter] = useState<string>("all");
 
   useEffect(() => {
     let filtered = photos;
@@ -75,11 +60,22 @@ const MasonryDefault = ({
       photo.title.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
+    // Apply filter tags
+    if (selectedFilter !== "all") {
+      filtered = filtered.filter((photo) =>
+        photo.tags.includes(selectedFilter)
+      );
+    }
+
     setFilteredPhotos(filtered);
-  }, [isFame, isSingleGallery, isExistEventId, searchQuery]);
+  }, [isFame, isSingleGallery, isExistEventId, searchQuery, selectedFilter]);
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
+  };
+
+  const handleFilterChange = (filter: string) => {
+    setSelectedFilter(filter);
   };
 
   return (
@@ -87,13 +83,18 @@ const MasonryDefault = ({
       <div className="pb-8 mx-auto">
         <div className="flex flex-row justify-between items-center mb-4">
           <div className="flex flex-row gap-8">
-            {filters.map((filter, index) => (
-              <p
-                className="uppercase tracking-widest text-md text-primary500"
-                key={index}
+            {filters.map((filter) => (
+              <button
+                key={filter}
+                onClick={() => handleFilterChange(filter)}
+                className={`uppercase tracking-widest text-md ${
+                  selectedFilter === filter
+                    ? "text-primary500 font-semibold"
+                    : "text-gray-500"
+                }`}
               >
-                {filter.title}
-              </p>
+                {filter}
+              </button>
             ))}
           </div>
           <div className="flex flex-row gap-4">
